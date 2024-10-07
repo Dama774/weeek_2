@@ -1,12 +1,9 @@
 #include <iostream>
 #include <string>
+#include "badminton.h"
 
 int main() {
-    std::string day;
-    std::string temperature;
-    std::string precipitation;
-    std::string wind;
-    std::string humidity;
+    std::string day, temperature, precipitation, wind, humidity;
 
     // Запрашиваем день недели
     std::cout << "Введите день недели: ";
@@ -26,16 +23,10 @@ int main() {
     std::cin >> humidity;
 
     // Проверяем условия для игры в бадминтон
-    bool isSunday = (day == "воскресенье");
-    bool isGoodWeather = (temperature == "жарко" || temperature == "тепло") &&
-                         (precipitation == "ясно" || precipitation == "облачно") &&
-                         (wind == "нет") &&
-                         (humidity == "низкая");
-
-    if (isSunday && isGoodWeather) {
-        std::cout << "Да, вы можете играть в бадминтон!" << std::endl;
+    if (canPlayBadminton(day, temperature, precipitation, wind, humidity)) {
+        std::cout << "Да" << std::endl;  // Можно играть
     } else {
-        std::cout << "Нет, вы не можете играть в бадминтон." << std::endl;
+        std::cout << "Нет" << std::endl;  // Нельзя играть
     }
 
     return 0;
